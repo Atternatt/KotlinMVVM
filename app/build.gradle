@@ -31,8 +31,10 @@ dependencies {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
 
-  //android framework
+  //kotlin dependencies
   compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+  //android framework
   compile "com.android.support:appcompat-v7:$appcompat_version"
   compile "com.android.support:design:$appcompat_version"
   compile "com.android.support:support-v4:$appcompat_version"
@@ -45,8 +47,10 @@ dependencies {
   compile "com.google.dagger:dagger:$daggerVersion"
   compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
   compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
-  provided "javax.annotation:jsr250-api:$javaxAnnotationVersion"
   compile "javax.inject:javax.inject:$javaxInjectVersion"
+  compile "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
+  compile "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion"
+  provided "javax.annotation:jsr250-api:$javaxAnnotationVersion"
 
   //network
   compile "com.squareup.okhttp:okhttp:$okHttpVersion"
@@ -56,7 +60,6 @@ dependencies {
   compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
   testCompile 'junit:junit:4.12'
-
 
 }
 repositories {

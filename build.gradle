@@ -19,6 +19,8 @@ buildscript {
   ext.stethoVersion = '1.4.2'
   ext.calligraphyVersion = '2.2.0'
   ext.retrofitAdapterVersion = '1.0.0'
+  ext.rxKotlinVersion = '2.0.0'
+  ext.rxRelayVersion = '2.0.0'
 
   repositories {
     jcenter()
