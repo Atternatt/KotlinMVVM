@@ -2,6 +2,24 @@
 
 buildscript {
   ext.kotlin_version = '1.1.1'
+  ext.appcompat_version = '25.3.0'
+
+
+  ext.retrofitVersion = '2.2.0'
+  ext.daggerVersion = '2.8'
+  ext.rxJavaVersion = '2.0.2'
+  ext.rxAndroidVersion = '2.0.1'
+  ext.javaxAnnotationVersion = '1.0'
+  ext.javaxInjectVersion = '1'
+  ext.gsonVersion = '2.3'
+  ext.okHttpVersion = '2.5.0'
+  ext.retrofitRxJava2AdapterVersion = '1.0.0'
+  ext.databindingVersion ='2.3.0'
+  ext.constraintLayoutVersion = '1.0.2'
+  ext.stethoVersion = '1.4.2'
+  ext.calligraphyVersion = '2.2.0'
+  ext.retrofitAdapterVersion = '1.0.0'
+
   repositories {
     jcenter()
   }
@@ -9,8 +27,6 @@ buildscript {
     classpath 'com.android.tools.build:gradle:2.3.0'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-    // NOTE: Do not place your application dependencies here; they belong
-    // in the individual module build.gradle files
   }
 }
 

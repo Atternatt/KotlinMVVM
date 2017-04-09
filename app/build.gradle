@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
   compileSdkVersion 25
@@ -18,19 +19,50 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+
+  dataBinding {
+    enabled = true
+  }
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile fileTree(include: ['*.jar'], dir: 'libs')
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
+
+  //android framework
   compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-  compile 'com.android.support:appcompat-v7:25.3.0'
-  compile 'com.android.support:design:25.3.0'
-  compile 'com.android.support:support-v4:25.3.0'
+  compile "com.android.support:appcompat-v7:$appcompat_version"
+  compile "com.android.support:design:$appcompat_version"
+  compile "com.android.support:support-v4:$appcompat_version"
+  compile "com.android.support:recyclerview-v7:$appcompat_version"
+  compile "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+  kapt "com.android.databinding:compiler:$databindingVersion"
+
+  //Rx and dependency injection
+  kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+  compile "com.google.dagger:dagger:$daggerVersion"
+  compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+  compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+  provided "javax.annotation:jsr250-api:$javaxAnnotationVersion"
+  compile "javax.inject:javax.inject:$javaxInjectVersion"
+
+  //network
+  compile "com.squareup.okhttp:okhttp:$okHttpVersion"
+  compile "com.google.code.gson:gson:$gsonVersion"
+  compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+  compile "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$retrofitAdapterVersion"
+  compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
   testCompile 'junit:junit:4.12'
+
+
 }
 repositories {
   mavenCentral()
+}
+
+kapt {
+  generateStubs = true
 }
