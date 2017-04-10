@@ -56,8 +56,9 @@ dependencies {
   compile "com.google.dagger:dagger:$daggerVersion"
   compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
   compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
-  compile "javax.inject:javax.inject:$javaxInjectVersion"
   compile "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
+  compile "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxBindingVersion"
+  compile "javax.inject:javax.inject:$javaxInjectVersion"
   compile "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion"
   provided "javax.annotation:jsr250-api:$javaxAnnotationVersion"
 

@@ -21,6 +21,7 @@ buildscript {
   ext.retrofitAdapterVersion = '1.0.0'
   ext.rxKotlinVersion = '2.0.0'
   ext.rxRelayVersion = '2.0.0'
+  ext.rxBindingVersion = '2.0.0'
 
   repositories {
     jcenter()
