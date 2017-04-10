@@ -13,10 +13,19 @@ android {
     versionName "1.0"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
+  def string = "String"
+  def endpoint = "ENDPOINT"
+  def appId = "APPID"
   buildTypes {
+    debug {
+      buildConfigField string, appId, '"m2f_mvvm_android_debug"'
+      buildConfigField string, endpoint, '"http://api.bandsintown.com/"'
+    }
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      buildConfigField string, endpoint, '"http://api.bandsintown.com/"'
+      buildConfigField string, appId, '"m2f_mvvm_android_release"'
     }
   }
 
