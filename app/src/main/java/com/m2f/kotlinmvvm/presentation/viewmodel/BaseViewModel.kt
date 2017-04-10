@@ -1,4 +1,4 @@
-package com.m2f.kotlinmvvm.com.m2f.kotlinmvvm.presentation.viewmodel
+package com.m2f.kotlinmvvm.presentation.viewmodel
 
 import android.databinding.BaseObservable
 import io.reactivex.disposables.CompositeDisposable
