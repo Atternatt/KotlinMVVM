@@ -1,4 +1,4 @@
-package com.m2f.kotlinmvvm.exceptions
+package com.m2f.kotlinmvvm.main.exceptions
 
 /**
  * @author Marc Moreno

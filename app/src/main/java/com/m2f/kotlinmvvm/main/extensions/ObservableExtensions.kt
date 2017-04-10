@@ -1,8 +1,8 @@
-package com.m2f.kotlinmvvm.extensions
+package com.m2f.kotlinmvvm.main.extensions
 
 import com.jakewharton.retrofit2.adapter.rxjava2.Result
-import com.m2f.kotlinmvvm.exceptions.RetryableException
-import com.m2f.kotlinmvvm.exceptions.UnhandledException
+import com.m2f.kotlinmvvm.main.exceptions.RetryableException
+import com.m2f.kotlinmvvm.main.exceptions.UnhandledException
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Observable
