@@ -23,6 +23,7 @@ buildscript {
   ext.rxRelayVersion = '2.0.0'
   ext.rxBindingVersion = '2.0.0'
   ext.drawableDslVersion = '0.1.0'
+  ext.materialSearchViewVersion = '1.2.0'
 
   repositories {
     jcenter()

@@ -71,9 +71,11 @@ dependencies {
 
   //other
   compile "com.github.infotech-group:android-drawable-dsl:$drawableDslVersion"
+  compile "com.miguelcatalan:materialsearchview:$materialSearchViewVersion"
 
+
+  compile 'com.android.support.constraint:constraint-layout:1.0.2'
   testCompile 'junit:junit:4.12'
-
 }
 repositories {
   mavenCentral()
