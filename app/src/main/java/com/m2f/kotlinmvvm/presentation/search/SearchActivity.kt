@@ -16,9 +16,11 @@ class SearchActivity : BindableBaseActivity<SearchComponent, ActivitySearchBindi
 
     @Inject lateinit var vieWModel: SearchConcertsViewModel
 
-    override val component: SearchComponent = DaggerSearchComponent.builder()
-            .applicationComponent(appComponent)
-            .build()
+    override val component: SearchComponent by lazy {
+        DaggerSearchComponent.builder()
+                .applicationComponent(appComponent)
+                .build()
+    }
 
     override fun viewModel(): ViewModel {
         return this.vieWModel

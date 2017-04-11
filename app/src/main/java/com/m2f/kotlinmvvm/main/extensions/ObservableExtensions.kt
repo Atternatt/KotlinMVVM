@@ -1,6 +1,7 @@
 package com.m2f.kotlinmvvm.main.extensions
 
 import com.jakewharton.retrofit2.adapter.rxjava2.Result
+import com.m2f.kotlinmvvm.main.exceptions.NoResultsException
 import com.m2f.kotlinmvvm.main.exceptions.RetryableException
 import com.m2f.kotlinmvvm.main.exceptions.UnhandledException
 import io.reactivex.BackpressureStrategy
@@ -52,8 +53,8 @@ fun <Body> Result<Body>.extractBody(): Body? {
         val response = this.response()
         if (!response.isSuccessful) {
             val code: Int = response.code()
-            if (404 == code) {
-                return null
+            if (404 == code || 403 == code) {
+                throw NoResultsException()
             } else {
                 throw UnhandledException("http error code: $code")
             }

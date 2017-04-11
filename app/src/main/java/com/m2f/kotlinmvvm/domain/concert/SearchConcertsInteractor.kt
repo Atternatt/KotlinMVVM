@@ -2,6 +2,7 @@ package com.m2f.kotlinmvvm.domain.concert
 
 import com.m2f.kotlinmvvm.domain.executor.PostExecutionThread
 import com.m2f.kotlinmvvm.domain.interactor.BaseInteractor
+import com.m2f.kotlinmvvm.main.exceptions.NoResultsException
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Observable
@@ -22,6 +23,7 @@ class SearchConcertsInteractor
         return param.toFlowable(BackpressureStrategy.LATEST)
                 .filter(String::isNotBlank)
                 .switchMap { concertRepository.getAllConcertsFromArtist(it) }
+                .onErrorReturn { if(it is NoResultsException) listOf<Concert>() else throw it }
     }
 
 }

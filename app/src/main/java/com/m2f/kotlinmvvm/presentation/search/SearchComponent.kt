@@ -12,5 +12,5 @@ import io.folioapp.android.di.CustomScope
 @Component(dependencies = arrayOf(ApplicationComponent::class), modules = arrayOf(SearchModule::class))
 interface SearchComponent {
 
-    //todo: add the injectable activity
+    fun inject(activity: SearchActivity)
 }
