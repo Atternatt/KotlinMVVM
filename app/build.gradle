@@ -69,11 +69,15 @@ dependencies {
   compile "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$retrofitAdapterVersion"
   compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
+  //other
+  compile "com.github.infotech-group:android-drawable-dsl:$drawableDslVersion"
+
   testCompile 'junit:junit:4.12'
 
 }
 repositories {
   mavenCentral()
+  maven { url 'https://jitpack.io' }
 }
 
 kapt {

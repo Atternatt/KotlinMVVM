@@ -22,12 +22,13 @@ buildscript {
   ext.rxKotlinVersion = '2.0.0'
   ext.rxRelayVersion = '2.0.0'
   ext.rxBindingVersion = '2.0.0'
+  ext.drawableDslVersion = '0.1.0'
 
   repositories {
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.3.0'
+    classpath 'com.android.tools.build:gradle:2.3.1'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
   }
