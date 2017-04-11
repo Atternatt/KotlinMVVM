@@ -6,8 +6,6 @@ import com.m2f.kotlinmvvm.main.exceptions.UnhandledException
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Observable
-import io.reactivex.ObservableSource
-import org.reactivestreams.Publisher
 import java.io.IOException
 import java.net.ConnectException
 import java.util.concurrent.TimeoutException
@@ -65,10 +63,10 @@ fun <Body> Result<Body>.extractBody(): Body? {
     }
 }
 
-fun <Body> Observable<Result<Body>>.extractResult(): ObservableSource<Body> {
+fun <Body> Observable<Result<Body>>.extractResult(): Observable<Body> {
     return this.compose { it.switchMap { it.extractBody().propagate() } }
 }
 
-fun <Body> Flowable<Result<Body>>.extractResult(): Publisher<Body> {
+fun <Body> Flowable<Result<Body>>.extractResult(): Flowable<Body> {
     return this.compose { it.switchMap { it.extractBody().propagateFlowable() } }
 }

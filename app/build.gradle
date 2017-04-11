@@ -19,12 +19,12 @@ android {
   buildTypes {
     debug {
       buildConfigField string, appId, '"m2f_mvvm_android_debug"'
-      buildConfigField string, endpoint, '"http://api.bandsintown.com/"'
+      buildConfigField string, endpoint, '"https://rest.bandsintown.com/"'
     }
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-      buildConfigField string, endpoint, '"http://api.bandsintown.com/"'
+      buildConfigField string, endpoint, '"https://rest.bandsintown.com/"'
       buildConfigField string, appId, '"m2f_mvvm_android_release"'
     }
   }

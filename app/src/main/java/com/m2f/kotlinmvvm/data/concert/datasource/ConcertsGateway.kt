@@ -13,6 +13,6 @@ import retrofit2.http.Path
  */
 interface ConcertsGateway {
 
-    @GET("artists/{artist}/events.json?api_version=2.0&app_id=" + BuildConfig.APPID)
+    @GET("artists/{artist}/events?app_id=" + BuildConfig.APPID)
     fun getConcerts(@Path("artist") artistName: String): Flowable<Result<ConcertResponse>>
 }

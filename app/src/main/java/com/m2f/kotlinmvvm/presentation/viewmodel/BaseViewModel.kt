@@ -2,6 +2,8 @@ package com.m2f.kotlinmvvm.presentation.viewmodel
 
 import android.databinding.BaseObservable
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.plusAssign
 
 /**
  * @author Marc Moreno
@@ -9,7 +11,19 @@ import io.reactivex.disposables.CompositeDisposable
  */
 abstract class BaseViewModel : ViewModel, BaseObservable() {
 
-    val compositeDisposable = CompositeDisposable()
+    private val compositeDisposable = CompositeDisposable()
+
+    abstract var interactorList: List<Disposable>
+
+    operator fun plusAssign(disposable: Disposable) {
+        compositeDisposable += disposable
+    }
+
+    override fun onResume() {
+        interactorList.forEach { compositeDisposable += it }
+    }
+
+    override fun onPause() {}
 
     override fun onDestroy() {
         super.onDestroy()
