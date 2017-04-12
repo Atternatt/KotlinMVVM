@@ -18,49 +18,46 @@ import java.util.concurrent.TimeoutException
  */
 
 
-
 fun <T> T?.propagate(): Observable<T> {
     return Observable.create { emitter ->
-        if(!emitter.isDisposed) {
+        if (!emitter.isDisposed) {
             this?.let { emitter.onNext(it) }
         }
     }
 }
 
 fun <T> T?.propagateFlowable(backpressureStrategy: BackpressureStrategy = BackpressureStrategy.LATEST): Flowable<T> {
-    return Flowable.create<T>( { emitter ->
+    return Flowable.create<T>({ emitter ->
         if (!emitter.isCancelled) {
             this?.let { emitter.onNext(it) }
         }
     }, backpressureStrategy)
 }
 
-fun <Body> Result<Body>.extractBody(): Body? {
-    return if (this.isError) {
-        with(this.error()) {
-            if (this is IOException) {
-                when (this) {
-                    is ConnectException -> throw RetryableException()
-                    is TimeoutException -> throw RetryableException()
-                    else -> throw UnhandledException(this.toString())
-                }
-            } else {
-                android.util.Log.wtf("UNHANDLED_EXCEPTION", this@extractBody.error())
-                throw UnhandledException(this.toString())
-            }
-        }
-    } else {
-        val response = this.response()
-        if (!response.isSuccessful) {
-            val code: Int = response.code()
-            if (404 == code || 403 == code) {
-                throw NoResultsException()
-            } else {
-                throw UnhandledException("http error code: $code")
+private fun <Body> Result<Body>.extractBody(): Body? = if (this.isError) {
+    with(this.error()) {
+        if (this is IOException) {
+            when (this) {
+                is ConnectException -> throw RetryableException()
+                is TimeoutException -> throw RetryableException()
+                else -> throw UnhandledException(this.toString())
             }
         } else {
-            return response.body()
+            android.util.Log.wtf("UNHANDLED_EXCEPTION", this@extractBody.error())
+            throw UnhandledException(this.toString())
         }
+    }
+} else {
+    val response = this.response()
+    if (!response.isSuccessful) {
+        val code: Int = response.code()
+        if (404 == code || 403 == code) {
+            throw NoResultsException()
+        } else {
+            throw UnhandledException("http error code: $code")
+        }
+    } else {
+        response.body()
     }
 }
 
