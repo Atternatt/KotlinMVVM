@@ -3,7 +3,9 @@ package com.m2f.kotlinmvvm.presentation.search
 import android.databinding.BindingAdapter
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import com.m2f.kotlinmvvm.domain.concert.Concert
+import com.m2f.kotlinmvvm.main.extensions.bgColor
 import com.m2f.kotlinmvvm.main.extensions.textEvents
 import com.miguelcatalan.materialsearchview.MaterialSearchView
 import io.reactivex.Observable
@@ -27,6 +29,11 @@ fun bindSearchViewToViewModel(searchView: MaterialSearchView,
     }
 
     searchConcertsViewModel.initSearchArtifact(observable)
+}
+
+@BindingAdapter("bind:bgColor")
+fun bindBackgroundColor(view: View, color: Int) {
+    view.bgColor = color
 }
 
 

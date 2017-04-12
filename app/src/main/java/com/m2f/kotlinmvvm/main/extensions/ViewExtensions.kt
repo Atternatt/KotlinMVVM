@@ -77,7 +77,7 @@ fun backgroundColorAnimator(): ReadWriteProperty<View, Int> =
             override fun setValue(thisRef: View, property: KProperty<*>, value: Int) {
 
                 ValueAnimator.ofObject(ArgbEvaluator(), getValue(thisRef, property), value).apply {
-                    duration = 1500L
+                    duration = 1000L
                     interpolator = AccelerateDecelerateInterpolator()
                     addUpdateListener { thisRef.setBackgroundColor(it.animatedValue as Int) }
                 }.start()
