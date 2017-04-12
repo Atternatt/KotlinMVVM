@@ -12,13 +12,11 @@ package com.m2f.kotlinmvvm.presentation.search
 
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
-import android.text.method.TextKeyListener.clear
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.m2f.kotlinmvvm.R
 import com.m2f.kotlinmvvm.databinding.RowConcertBinding
 import com.m2f.kotlinmvvm.domain.concert.Concert
-import java.util.Collections.addAll
 
 /**
  * @author Marc Moreno
@@ -39,11 +37,11 @@ class ConcertListAdapter(private val concertList: List<Concert>) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: ConcertViewHolder, position: Int) {
-        holder.bind(concertList[position])
+        holder.bind(concerts[position])
     }
 
     override fun getItemCount(): Int {
-        return concertList.size
+        return concerts.size
     }
 
     inner class ConcertViewHolder(private val binding: RowConcertBinding) : RecyclerView.ViewHolder(binding.root) {

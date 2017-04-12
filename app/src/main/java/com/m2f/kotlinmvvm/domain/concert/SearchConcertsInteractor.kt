@@ -2,11 +2,13 @@ package com.m2f.kotlinmvvm.domain.concert
 
 import com.m2f.kotlinmvvm.domain.executor.PostExecutionThread
 import com.m2f.kotlinmvvm.domain.interactor.BaseInteractor
-import com.m2f.kotlinmvvm.main.exceptions.NoResultsException
+import com.m2f.kotlinmvvm.main.extensions.propagateFlowable
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Observable
+import java.io.InterruptedIOException
 import java.util.concurrent.Executor
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /**
@@ -23,7 +25,12 @@ class SearchConcertsInteractor
         return param.toFlowable(BackpressureStrategy.LATEST)
                 .filter(String::isNotBlank)
                 .switchMap { concertRepository.getAllConcertsFromArtist(it) }
-                .onErrorReturn { if(it is NoResultsException) listOf<Concert>() else throw it }
+                .onErrorResumeNext(listOf<Concert>().propagateFlowable())
+                .retryWhen { throwableFlowable ->
+                    Flowable.timer(2, TimeUnit.SECONDS)
+                            .concatMap { throwableFlowable }
+                            .filter { it is InterruptedIOException }
+                }
     }
 
 }

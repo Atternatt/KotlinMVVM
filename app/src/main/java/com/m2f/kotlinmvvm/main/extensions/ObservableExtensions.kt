@@ -34,7 +34,7 @@ fun <T> T?.propagateFlowable(backpressureStrategy: BackpressureStrategy = Backpr
     }, backpressureStrategy)
 }
 
-private fun <Body> Result<Body>.extractBody(): Body? = if (this.isError) {
+private fun <Body> Result<Body>.extractBody(): Body = if (this.isError) {
     with(this.error()) {
         if (this is IOException) {
             when (this) {
@@ -62,9 +62,9 @@ private fun <Body> Result<Body>.extractBody(): Body? = if (this.isError) {
 }
 
 fun <Body> Observable<Result<Body>>.extractResult(): Observable<Body> {
-    return this.compose { it.switchMap { it.extractBody().propagate() } }
+    return this.compose { it.map { it.extractBody() } }
 }
 
 fun <Body> Flowable<Result<Body>>.extractResult(): Flowable<Body> {
-    return this.compose { it.switchMap { it.extractBody().propagateFlowable() } }
+    return this.compose { it.map { it.extractBody() } }
 }

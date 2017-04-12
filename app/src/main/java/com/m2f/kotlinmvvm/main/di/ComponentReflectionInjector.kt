@@ -1,6 +1,6 @@
 package com.m2f.kotlinmvvm.main.di
 
-import io.folioapp.android.di.Injector
+import com.m2f.kotlinmvvm.di.Injector
 import java.lang.reflect.Method
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap

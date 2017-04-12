@@ -1,4 +1,4 @@
-package io.folioapp.android.di
+package com.m2f.kotlinmvvm.di
 
 /**
  * @author Marc Moreno

@@ -1,9 +1,10 @@
 package com.m2f.kotlinmvvm.presentation.search
 
+import android.databinding.ObservableField
 import android.util.Log
 import com.m2f.kotlinmvvm.domain.concert.Concert
 import com.m2f.kotlinmvvm.domain.concert.SearchConcertsInteractor
-import com.m2f.kotlinmvvm.main.extensions.propagate
+import com.m2f.kotlinmvvm.main.extensions.observe
 import com.m2f.kotlinmvvm.presentation.viewmodel.BaseViewModel
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
@@ -18,14 +19,19 @@ class SearchConcertsViewModel
 
     override var interactorList: List<Disposable> = listOf(searchConcertsInteractor)
 
-    val concertList: List<Concert> = mutableListOf()
+    val concertList: ObservableField<List<Concert>> = ObservableField(listOf())
+
+    var numberOfResults: ObservableField<Int> = ObservableField(0)
 
     init {
-        initSearchArtifact(Observable.defer { "Swallow the sun".propagate() })
+        this += concertList.observe().subscribe { numberOfResults.set(it.size) }
     }
 
     fun initSearchArtifact(searchQueries: Observable<String>) {
-        searchConcertsInteractor.execute(searchQueries, { Log.d("RESULTS", it.size.toString())})
+        searchConcertsInteractor.execute(searchQueries,
+                onNext = { concertList.set(it)},
+                onError = { Log.wtf("UNEXPECTED!!", ":( -> ${it.message ?: it.toString()}")},
+                onComplete = { Log.d("COMPLETED", "completed!") })
     }
 
 }

@@ -20,7 +20,7 @@ fun bindSearchViewToViewModel(searchView: MaterialSearchView,
 
     val observable = Observable.defer<String> {
         searchView.textEvents()
-                .debounce(350L, TimeUnit.MILLISECONDS)
+                .debounce(500L, TimeUnit.MILLISECONDS)
                 .filter(String::isNotBlank)
                 .map(String::trim)
                 .distinctUntilChanged()

@@ -4,7 +4,7 @@ import android.content.Context
 import com.m2f.kotlinmvvm.domain.executor.PostExecutionThread
 import com.m2f.kotlinmvvm.main.di.ApplicationModule
 import dagger.Component
-import io.folioapp.android.di.NetworkModule
+import com.m2f.kotlinmvvm.main.di.NetworkModule
 import retrofit2.Retrofit
 import java.util.concurrent.Executor
 import javax.inject.Singleton

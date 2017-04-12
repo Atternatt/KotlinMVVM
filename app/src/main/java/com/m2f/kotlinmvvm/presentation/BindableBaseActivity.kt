@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.support.annotation.LayoutRes
 import com.m2f.kotlinmvvm.main.di.ComponentReflectionInjector
 import com.m2f.kotlinmvvm.presentation.viewmodel.ViewModel
-import io.folioapp.android.di.Injector
+import com.m2f.kotlinmvvm.di.Injector
 
 /**
  * @author Marc Moreno

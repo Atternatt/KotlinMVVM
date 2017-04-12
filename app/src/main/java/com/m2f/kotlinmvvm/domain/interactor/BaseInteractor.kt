@@ -18,8 +18,9 @@ constructor(val postExecutionThread: PostExecutionThread, val threadExecutor: Ex
 
     fun execute(param: Param,
                 onNext: (Source) -> Unit = {},
-                onComplete: () -> Unit = {},
-                onError: (Throwable) -> Unit = {}) {
+                onError: (Throwable) -> Unit = {},
+                onComplete: () -> Unit = {}
+    ) {
         addDisposable(buildFlowable(param)
                 .subscribeOn(Schedulers.from(threadExecutor))
                 .observeOn(postExecutionThread.scheduler).subscribe(onNext, onError, onComplete))

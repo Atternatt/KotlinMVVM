@@ -2,7 +2,7 @@ package com.m2f.kotlinmvvm.presentation.search
 
 import com.m2f.kotlinmvvm.main.di.ApplicationComponent
 import dagger.Component
-import io.folioapp.android.di.CustomScope
+import com.m2f.kotlinmvvm.di.CustomScope
 
 /**
  * @author Marc Moreno

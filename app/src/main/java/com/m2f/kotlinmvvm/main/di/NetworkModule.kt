@@ -1,4 +1,4 @@
-package io.folioapp.android.di
+package com.m2f.kotlinmvvm.main.di
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.m2f.kotlinmvvm.BuildConfig
@@ -10,6 +10,7 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Type
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 /**
@@ -24,6 +25,7 @@ class NetworkModule {
     fun providesHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
                 .apply {
+                    writeTimeout(20L, TimeUnit.SECONDS)
                     if(BuildConfig.DEBUG) {
 //                        addNetworkInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                     }

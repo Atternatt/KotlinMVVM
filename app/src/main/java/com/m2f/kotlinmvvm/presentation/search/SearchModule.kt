@@ -6,7 +6,7 @@ import com.m2f.kotlinmvvm.data.concert.datasource.ConcertsDatasource
 import com.m2f.kotlinmvvm.domain.concert.ConcertRepository
 import dagger.Module
 import dagger.Provides
-import io.folioapp.android.di.CustomScope
+import com.m2f.kotlinmvvm.di.CustomScope
 
 /**
  * @author Marc Moreno

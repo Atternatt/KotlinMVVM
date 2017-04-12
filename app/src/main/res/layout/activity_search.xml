@@ -59,7 +59,7 @@
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        bind:concertList="@{}"
+        bind:concertList="@{viewModel.concertList}"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
   </android.support.design.widget.CoordinatorLayout>

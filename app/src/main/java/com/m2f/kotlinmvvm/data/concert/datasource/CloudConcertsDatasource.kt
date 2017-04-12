@@ -19,6 +19,7 @@ class CloudConcertsDatasource
 
     override fun getConcertsForArtist(artistName: String): Flowable<List<Concert>> {
         return gateway.getConcerts(artistName)
+                .filter { it.isError.not() && it.response().isSuccessful }
                 .extractResult()
                 .map { it.map { it.toBO() } }
     }
