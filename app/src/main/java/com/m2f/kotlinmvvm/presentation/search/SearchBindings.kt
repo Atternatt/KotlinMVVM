@@ -30,7 +30,7 @@ fun bindSearchViewToViewModel(searchView: MaterialSearchView,
 }
 
 
-@BindingAdapter("bind:eventList")
+@BindingAdapter("bind:concertList")
 fun bindListToRecyclerView(recyclerView: RecyclerView, list: List<Concert>?) {
 
     if (list != null) {

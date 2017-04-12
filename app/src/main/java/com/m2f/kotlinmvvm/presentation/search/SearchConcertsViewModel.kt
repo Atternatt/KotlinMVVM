@@ -1,6 +1,7 @@
 package com.m2f.kotlinmvvm.presentation.search
 
 import android.util.Log
+import com.m2f.kotlinmvvm.domain.concert.Concert
 import com.m2f.kotlinmvvm.domain.concert.SearchConcertsInteractor
 import com.m2f.kotlinmvvm.main.extensions.propagate
 import com.m2f.kotlinmvvm.presentation.viewmodel.BaseViewModel
@@ -16,6 +17,8 @@ class SearchConcertsViewModel
 @Inject constructor(val searchConcertsInteractor: SearchConcertsInteractor): BaseViewModel() {
 
     override var interactorList: List<Disposable> = listOf(searchConcertsInteractor)
+
+    val concertList: List<Concert> = mutableListOf()
 
     init {
         initSearchArtifact(Observable.defer { "Swallow the sun".propagate() })

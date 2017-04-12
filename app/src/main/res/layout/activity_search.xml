@@ -11,6 +11,7 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     >
 
   <data>
@@ -49,6 +50,7 @@
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            bind:search="@{viewModel}"
             />
       </FrameLayout>
     </android.support.design.widget.AppBarLayout>
@@ -57,6 +59,7 @@
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        bind:concertList="@{}"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
   </android.support.design.widget.CoordinatorLayout>
